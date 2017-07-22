@@ -4,7 +4,8 @@ It calculates and shows Islamic prayer times according to latitude and longitude
 
 # Help 
 
-You can file bugs or ask for help by just clicking [issues](https://github.com/kensully/PrayTimes/issues)
+You can file bugs or ask for help by just clicking [issues](https://github.com/kensully/PrayTimes/issues) --> `NewIssue` button.
+
 You can use it on Windows, Mac OS X  and Linux on the condition that you installed sqlite3 and added it to system path.
 
 # Install
