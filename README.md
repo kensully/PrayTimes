@@ -22,11 +22,11 @@ sqlite3
 Install nw version  manager to handle nwjs versions https://www.npmjs.com/package/nwjs
 
 
-npm i -g nwjs
+    npm i -g nwjs
 
-nw install 0.12.3
+    nw install 0.12.3
 
-nw use 0.12.3
+    nw use 0.12.3
  
 Clone this repository 
 
@@ -38,7 +38,7 @@ Clone this repository
 
 This is an ameteur project, use  at your own risk.
 
-## License
+# License
 You are free to use it for only personal usage. 
 
 # Donation 
