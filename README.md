@@ -10,8 +10,11 @@ You can use it on Windows, Mac OS X  and Linux on the condition that you install
 Requisitions:
 
 node v6.9.1
+
 npm 3.10.8
+
 nw.js version 0.12.3
+
 sqlite3
 
 # How to use:
@@ -20,7 +23,9 @@ Install nw version  manager to handle nwjs versions https://www.npmjs.com/packag
 
 
 npm i -g nwjs
+
 nw install 0.12.3
+
 nw use 0.12.3
  
 Clone this repository 
