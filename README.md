@@ -36,6 +36,9 @@ Clone this repository
     git clone https://github.com/kensully/PrayTimes.git
     cd PrayTimes
     nw .
+# Screenshot
+
+![Alt text](/screenshots/screenshot_00000.png)
 
 # Disclaimer
 
