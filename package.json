@@ -1,0 +1,47 @@
+{
+    "app_name": "prayertimes-succeeder",
+    "chromium-args": "  --enable-transparent-visuals --disable-gpu --disable-web-security --allow-file-access-from-files --allow-file-access ",
+    "dependencies": {
+        "fs-exists-sync": "^0.1.0",
+        "jsonfile": "^3.0.0",
+        "no-network-geocoder": "0.0.3"
+    },
+    "main": "index.html",
+    "name": "prayertimes-widget",
+    "webexe_settings": {
+        "blacklist": "",
+        "custom_script": "",
+        "download_dir": "",
+        "export_dir": "output",
+        "force_download": false,
+        "linux-x32": true,
+        "linux-x64": false,
+        "mac-x64": true,
+        "nw_compression_level": 0,
+        "nw_version": "0.12.3",
+        "output_pattern": "",
+        "sdk_build": false,
+        "uncompressed_folder": false,
+        "whitelist": "",
+        "windows-x32": true,
+        "windows-x64": true
+    },
+    "webkit": {},
+    "window": {
+        "exe_icon": "img/icon.png",
+        "frame": false,
+        "height": 191,
+        "icon": "img/icon.png",
+        "id": "prayertimes-succeeder",
+        "kiosk": false,
+        "mac_icon": "img/icon.png",
+        "position": "center",
+        "resizable": false,
+        "show": false,
+        "show_in_taskbar": false,
+        "title": "PrayTimes",
+        "toolbar": false,
+        "transparent": true,
+        "width": 150
+    }
+}

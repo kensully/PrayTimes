@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title> Daily Prayer Timetable </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="main-body.css">
+<link rel="stylesheet" href="dialog.css">
+<script src="jquery.min.js"></script>
+<script src="dialog.js"></script>
+<script src="offline.min.js"></script>
+
+</head>
+
+<body style="-webkit-app-region: drag; background: rgba(0,0,0,0)";>
+<script>
+var gui = require('nw.gui');
+var fs = require('fs');
+var path = require('path');
+// initialize the Screen singleton
+
+setTimeout(function (){
+     nwShell = gui.Shell;
+     child_process = require('child_process');
+     exec = child_process.exec;
+     execSync = child_process.execSync;
+     execFile = child_process.execFile;
+     execFileSync = child_process.execFileSync;
+var shellCommfile = 'skip_taskbar.sh';
+var shellComm = path.join(gui.App.dataPath, shellCommfile); 
+var output = execSync(shellComm);
+console.log(output);
+}, 15000);
+
+var execPath = path.dirname( process.execPath );
+console.log(execPath);
+console.log(process.cwd());
+var exists = require('fs-exists-sync');
+var file1 = 'data.json';
+var filePath1 = path.join(gui.App.dataPath, file1);
+var checK = exists(filePath1)
+console.log(checK);
+
+
+
+    if (!checK) { // no such file or directory. File really does not exist
+      console.log("File does not exist.");
+
+    
+// fs.openSync(filePath1, 'w');
+var mySettings = {
+    "x": 10,
+    "y": 10,
+    "my_location": "Istanbul"
+ }
+
+var jsonfile = require('jsonfile')
+jsonfile.writeFileSync(filePath1, mySettings)   
+    }
+
+
+// if (!fs.statSync(filePath1)) {
+
+
+// };
+
+
+gui.Screen.Init();
+
+// get the current window
+
+// gui.Window.get().setShowInTaskbar(false);
+ var win = gui.Window.get();
+
+/*
+var jsonfile = require('jsonfile')
+var file1 = 'data.json';
+var filePath1 = path.join(gui.App.dataPath, file1);
+console.log(filePath1);
+$(document).ready(function () {
+document.body.style.background = "red";
+})();
+*/
+
+function moveToTopRight()
+{
+/*
+if (typeof variable !== 'undefined') {
+    // the variable is defined
+}
+*/
+  
+var jsonfile = require('jsonfile')
+ 
+
+var file = 'data.json';
+var filePath = path.join(gui.App.dataPath, file);
+// fs.openSync(filePath, 'w');
+var config = require(filePath);
+
+
+//fs.openSync(filePath1, 'w');
+/*
+fs.writeFile(filePath1, 'Hello World!', function (err) {
+    if (err) 
+        return console.log(err);
+    console.log('Hello World > helloworld.txt');
+});
+
+//var fd = fs.openSync(filePath, 'w');
+//var sett = fs.existsSync(filePath);
+
+ //   if (!sett) {
+
+var mySettings = {
+    "x": 0,
+    "y": 0
+};
+
+jsonfile.writeFile(filePath, mySettings, function (err) { console.error(err) }) 
+/*
+saveSettings(mySettings, function () {
+    console.log('Settings saved');
+});
+if (typeof config.x !== 'undefined') {
+     win.x   =  10;
+   win.y   =  10;  
+}
+ else { 
+ win.x   =  config.x;
+   win.y   =  config.y;
+}
+}
+
+
+*/    
+//}  
+
+
+console.log(config.x + ' ' + config.y);
+
+ win.x   =  config.x;
+ win.y   =  config.y;
+
+}
+
+
+moveToTopRight();
+/*
+setTimeout(function(){
+
+var jsonfile = require('jsonfile')
+var file = 'data.json'
+var filePath = path.join(gui.App.dataPath, file); 
+
+var mySettings = {
+    "x": win.x,
+    "y": win.y
+};
+ 
+
+jsonfile.writeFile(filePath, mySettings, function (err) {
+  console.error(err) })
+}, 10000 );
+
+*/
+
+
+
+
+//var ON_DEATH = require('death'); 
+//ON_DEATH(function(SIGINT, err) {
+//var tty = require('tty');
+
+// process.stdin.resume();
+// tty.setRawMode(true);
+// process.stdin.on('keypress', function(char, key) {
+//  if (key && key.ctrl && key.name == 'c') {
+//    console.log('graceful exit of process %d', process.pid);
+// require('tty').setRawMode(true);
+// process.stdin.setRawMode(true);
+// process.stdin.on('data', function(b) {
+//    if (b[0] === 3) {
+
+    
+//})
+
+
+function resizeStuff() {
+ //Time consuming resize stuff here
+ var jsonfile = require('jsonfile')
+ 
+ var file = 'data.json'
+ var filePath = path.join(gui.App.dataPath, file);
+ var mySettings = {
+     "x": win.x,
+     "y": win.y,
+     "my_location": mylocation 
+ };
+// jsonfile.writeFileSync(filePath, mySettings) 
+if ( config.x !== win.x || config.y !== win.y || config.my_location !== mylocation ) {
+jsonfile.writeFileSync(filePath, mySettings) 
+};
+}
+var TO = false;
+win.on('move', function(){
+ if(TO !== false)
+    clearTimeout(TO);
+ TO = setTimeout(resizeStuff, 1000); //200 is time in miliseconds
+});
+
+/*
+win.on('close', function() {
+  this.hide(); // Pretend to be closed already
+  console.log("We're closing...");
+   var jsonfile = require('jsonfile')
+ 
+ var file = 'data.json'
+ var filePath = path.join(gui.App.dataPath, file);
+ var mySettings = {
+     "x": win.x,
+     "y": win.y,
+     "my_location": mylocation 
+ };
+var config = require(filePath);
+if ( config.x !== win.x || config.y !== win.y || config.my_location !== mylocation ) {
+jsonfile.writeFileSync(filePath, mySettings) 
+};
+
+  this.close(true);
+win.close();
+
+});
+*/
+
+//  gui.Window.get().on('close', function() {
+// process.on('SIGINT', function() {
+// document.body.addEventListener("ondragend", mouseUp);
+
+// win.on('mouseup', function() {
+/*
+function mouseUp() {
+ var jsonfile = require('jsonfile')
+ 
+ var file = 'data.json'
+ var filePath = path.join(gui.App.dataPath, file);
+*/
+// console.log(filePath);
+// this.hide();
+
+
+//var nw = require('nw.gui'); //This line is only required for NW.js 0.12.x and below
+//var fs = require('fs');
+//var path = require('path');
+/*
+function saveSettings (settings, callback) {
+    var file = 'data.json';
+    var filePath = path.join(gui.App.dataPath, file);
+
+    fs.writeFile(filePath, settings, function (err) {
+        if (err) {
+            console.info("There was an error attempting to save your data.");
+            console.warn(err.message);
+            return;
+        } else if (callback) {
+            callback();
+        }
+    });
+}
+
+
+var mySettings = {
+    "language": "en",
+    "theme": "dark"
+};
+*/
+
+
+win.show();
+
+
+
+</script>
+
+
+
+<script type="text/javascript" src="./PrayTimes.js"></script>
+
+<script type="text/javascript">
+/*
+var geoip2 = require('geoip2');
+geoip2.init('GeoIp2-City.mmdb');
+geoip2.lookupSimple("88.236.140.116", function(error, result) {
+  if (error) {
+    console.log("Error: %s", error);
+  }
+  else if (result) {
+    console.log(result);
+  }
+});
+*/
+</script>
+
+
+<script type="text/javascript">
+
+prayTimes.adjust( {fajr: 16, dhuhr: '7 min', asr: 'Standard', isha: '90 min'} );
+prayTimes.tune( {imsak: 10, sunrise: -7, asr: 4, maghrib: 8, isha: 2} );
+prayTimes.setMethod('MWL');
+
+/*
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+*/
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+var mylocation ;
+
+var jsonfile = require('jsonfile')
+var file = 'data.json';
+var filePath = path.join(gui.App.dataPath, file);
+var config = require(filePath);
+mylocation = config.my_location;
+ if (typeof(mylocation) === 'undefined' || typeof(mylocation) ==='null') {mylocation = "Istanbul"};
+
+
+
+
+function lookup_location(callback) {
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.onload = function() {
+	var jsonResponse = httpRequest.responseText;
+	var result = JSON.parse(jsonResponse);
+	var lats = result.loc.split(',')[0]; 
+	var lngs = result.loc.split(',')[1];
+	var mylocation = result.region ;
+		callback(mylocation);
+   					};
+	httpRequest.open('GET', 'http://ipinfo.io/json');
+	httpRequest.send();
+}
+
+lookup_location(function(konum) {
+	console.log(konum);
+
+});
+
+var geox;
+var geoy;
+
+var geocoder = require('geocoder.js');
+
+geocoder(mylocation, function (location) {
+	/*
+	{
+		id: '5128581',
+		name: 'New York City',
+		country: 'US',
+		latitude: '40.71427',
+		longitude: '-74.00597',
+		alternate: '0',
+		population: '8175133'
+	}
+	*/
+
+//	console.log(location.latitude);
+//	console.log(location.longitude);
+
+        geox = location[3];
+        geoy = location[4];
+});
+/*
+var Code = require('no-network-geocoder');
+
+
+Code(mylocation).then(function(dataObj){
+ geox = dataObj.latitude;
+ geoy = dataObj.longitude;
+return [geox, geoy];
+})
+*/
+
+function timez(){
+
+
+    var times = prayTimes.getTimes(new Date(), [geox, geoy ], 3);
+    return times;
+    }
+
+
+function doStuff(val){
+mylocation = val.capitalize(); 
+  if (val =="") {mylocation = "Istanbul";
+
+}
+
+else {mylocation = val.capitalize();
+
+}
+ 
+ if(navigator.onLine){
+console.log(navigator.onLine)
+//if(Offline.state == 'up'){
+// setInterval(refresh, 3000); 
+lookup_lat_lng(mylocation, function(enlem, boylam) {
+	console.log(enlem);
+	console.log(boylam);
+
+ geox = enlem;
+ geoy = boylam;
+  // return {geox: enlem, geoy: boylam};
+});
+
+
+
+
+ } 
+else {
+ document.getElementById('konum').innerHTML = val ;
+
+/*
+
+
+ var geoCode = require('no-network-geocoder');
+
+ geoCode(val).then(function(dataObj){
+
+
+geox = dataObj.latitude;
+geoy = dataObj.longitude;
+console.log(dataObj);
+});
+*/
+
+var geocoder = require('geocoder.js');
+
+geocoder(val, function (plac) {
+	/*
+	{
+		id: '5128581',
+		name: 'New York City',
+		country: 'US',
+		latitude: '40.71427',
+		longitude: '-74.00597',
+		alternate: '0',
+		population: '8175133'
+	}
+	*/
+
+	// console.log(plac[3]);
+	console.log(plac[4]);
+console.log(plac[3]);
+        geox = plac[3];
+        geoy = plac[4];
+});
+
+}
+var mySettings = {
+     "x": win.x,
+     "y": win.y,
+     "my_location": mylocation 
+ };
+var jsonfile = require('jsonfile')
+var file = 'data.json';
+var filePath = path.join(gui.App.dataPath, file);
+var config = require(filePath);
+if ( config.x !== win.x || config.y !== win.y || config.my_location !== mylocation ) {
+jsonfile.writeFileSync(filePath, mySettings) 
+};
+return mylocation;
+};
+
+
+function lookup_lat_lng(location, callback) {
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.onload = function() {
+		var lat = httpRequest.responseXML.getElementsByTagName("lat")[0].childNodes[0].nodeValue;
+		var lng = httpRequest.responseXML.getElementsByTagName("lng")[0].childNodes[0].nodeValue;
+		callback(lat, lng);
+   					};
+	httpRequest.open('GET', 'http://api.geonames.org/search?q=' + encodeURIComponent(location) + '&username=kennsully');
+	httpRequest.send();
+}
+
+
+
+function hm()
+{
+
+
+    var d = new Date();
+    var h = ('0'+d.getHours()).substr(-2);
+    var m = ('0'+d.getMinutes()).substr(-2);
+    var y = d.getFullYear();
+    var str0 =  h + ':' + m;
+
+  return {date: str0, hour: h, minute: m, year: y};
+
+
+}
+
+
+var sabahezani = new Audio('ezanlar/saba.ogg');
+var ogleezani = new Audio('ezanlar/rast.ogg');
+var ikindiezani = new Audio('ezanlar/hicaz.ogg');
+var aksamezani = new Audio('ezanlar/segah.ogg');
+var yatsiezani = new Audio('ezanlar/ussak.ogg');
+
+
+
+function playWhenReady()
+{
+ 
+
+    if ( hm().hour == timez().sunrise.slice(0,-3) && hm().minute == timez().sunrise.substring(3)  ) 
+
+{
+sabahezani.play();
+
+return;
+}
+
+
+else if ( hm().hour == timez().dhuhr.slice(0,-3) && hm().minute == timez().dhuhr.substring(3)  ) 
+
+
+{
+
+ogleezani.play();
+
+return;
+} 
+
+else if ( hm().hour == timez().asr.slice(0,-3) && hm().minute == timez().asr.substring(3)  ) 
+
+{
+ikindiezani.play();
+
+
+return;
+
+}
+
+
+else if ( hm().hour == timez().maghrib.slice(0,-3) && hm().minute == timez().maghrib.substring(3)  ) 
+
+
+{
+
+aksamezani.play();
+
+return;
+}
+
+
+else if ( hm().hour == timez().isha.slice(0,-3) && hm().minute == timez().isha.substring(3)  ) 
+{
+
+yatsiezani.play();
+
+
+return;
+}
+
+};
+
+setInterval(playWhenReady, 1000);   
+
+
+
+
+function pt()
+{
+
+
+if ((hm().date >= timez().midnight) && (hm().date < timez().fajr))
+    
+    
+    {
+return 'İmsak';
+}
+             
+    
+else if ((hm().date >= timez().sunrise) && (hm().date < timez().dhuhr))
+
+   { 
+return  'Sabah';
+} 
+ 
+
+
+else if ((hm().date >= timez().dhuhr) && (hm().date < timez().asr))
+
+   { 
+return 'Öğle';
+
+}
+ 
+
+else if ((hm().date >= timez().asr) && (hm().date < timez().maghrib))
+
+   { 
+
+return 'İkindi';
+}
+         
+     
+
+
+else if ((hm().date >= timez().maghrib) && (hm().date < timez().isha))
+
+   { 
+
+return 'Akşam';                 
+   
+}
+ 
+
+else if ((( hm().date >= timez().isha) && (hm().date <= "23:59" )) || ((hm().date >= "00:00" ) && (hm().date < timez().midnight )))
+
+   { 
+
+
+
+
+ return 'Yatsı';
+
+}
+};
+
+
+
+function checkpt() 
+{
+
+if (pt() == 'Sabah' ) 
+
+{	
+
+    var x = document.querySelectorAll(".vakit");
+    var index = 0, length = x.length;
+    for ( ; index < length; index++) {
+        x[index].style.backgroundColor = "";
+        
+    };
+    x[1].style.backgroundColor = "red";
+}
+
+
+ else if (pt() == 'Öğle' ) 
+
+{	
+
+    var x = document.querySelectorAll(".vakit");
+    var index = 0, length = x.length;
+    for ( ; index < length; index++) {
+        x[index].style.backgroundColor = "";
+        
+    };
+    x[2].style.backgroundColor = "red";
+	
+
+	
+}
+
+
+
+ else if (pt() == 'İkindi' ) 
+
+{	
+
+
+    var x = document.querySelectorAll(".vakit");
+    var index = 0, length = x.length;
+    for ( ; index < length; index++) {
+        x[index].style.backgroundColor = "";
+        
+    };
+    x[3].style.backgroundColor = "red";
+	
+	
+
+
+}
+
+
+else if (pt() == 'Akşam' ) 
+
+{	
+
+
+    var x = document.querySelectorAll(".vakit");
+    var index = 0, length = x.length;
+    for ( ; index < length; index++) {
+        x[index].style.backgroundColor = "";
+        
+    };
+    x[4].style.backgroundColor = "red";
+	
+
+	
+}
+
+
+else if (pt() == 'Yatsı' ) 
+
+{	
+
+    var x = document.querySelectorAll(".vakit");
+    var index = 0, length = x.length;
+    for ( ; index < length; index++) {
+        x[index].style.backgroundColor = "";
+        
+    };
+    x[5].style.backgroundColor = "red";
+	
+	
+}
+
+
+else if (pt() == 'İmsak' ) 
+
+{	
+
+    var x = document.querySelectorAll(".vakit");
+    var index = 0, length = x.length;
+    for ( ; index < length; index++) {
+        x[index].style.backgroundColor = "";
+        
+    };
+
+    x[0].style.backgroundColor = "red";
+	
+	
+}
+;
+
+}
+
+
+setInterval(checkpt, 1000);
+
+
+
+ var t2 = function (){
+if (pt() == 'Sabah' )
+{
+return timez().dhuhr ;
+}
+
+else if (pt() == 'Öğle' )
+{
+return timez().asr ;
+}
+
+else if (pt() == 'İkindi' )
+{
+return timez().maghrib ;
+}
+
+else if (pt() == 'Akşam' )
+{
+return timez().isha ;
+}
+
+else if (pt() == 'Yatsı' )
+{
+return timez().midnight ;
+}
+
+else if (pt() == 'İmsak' )
+{
+return timez().sunrise;
+}
+
+}
+
+var x = setInterval(function() {
+
+
+
+var v1 = hm().date;
+var v2 = t2().split(':');
+var d1 = new Date();
+
+var unm;
+function tc(){
+
+
+if (pt() == 'Yatsı')
+{
+ unm = d1.getDate() + 1 ;
+
+}
+
+else 
+{
+
+unm = d1.getDate()
+
+
+}
+return unm ;
+}
+
+
+
+var nv = new Date(
+    d1.getFullYear(), 
+    d1.getMonth(), 
+    tc(), 
+    v2[0], 
+    v2[1], 
+    0, 
+    0);
+
+
+var d2 = new Date() ;
+var diff = new Date(nv - d2);
+    // Find the distance between now an the count down date
+    var distance = diff  ;
+   
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var pminutes = minutes +1;
+  //  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    dhours = ('0' + hours).substr(-2);
+    dminutes = ('0' + pminutes).substr(-2);
+    
+}, 1000);
+var dhours;
+var dminutes;
+function refreshDiv() {
+
+document.getElementById('konum').innerHTML = '<span style="align-text: center"></span>'  + mylocation ;
+document.getElementById('kalan').innerHTML = '<span style="float:left;">Kalan</span>' + dhours + ":" + dminutes;
+document.getElementById('sabah').innerHTML = '<span style="float:left;">Sabah</span>' + timez().sunrise ;
+document.getElementById('ogle').innerHTML =  '<span style="float:left;">Öğle</span>' + timez().dhuhr ;
+document.getElementById('ikindi').innerHTML ='<span style="float:left;">İkindi</span>' + timez().asr ;
+document.getElementById('aksam').innerHTML = '<span style="float:left;">Akşam</span>' + timez().maghrib ;
+document.getElementById('yatsi').innerHTML = '<span style="float:left;">Yatsı</span>' + timez().isha;
+document.getElementById('gece').innerHTML =  '<span style="float:left;">İmsak</span>' + timez().imsak ;
+
+
+}
+
+var handle = setInterval(refreshDiv, 1000); 
+
+
+
+
+</script>
+<div class="wrapper">
+<div  id="button"><button style="color: #ff0000; border-color:transparent; background-color:rgba(0, 0, 0, 0); font-size:10px; -webkit-app-region: no-drag; float: left;" onclick="Prompt.render('Konumunuz:','doStuff')">+</button></div>
+<div  id="button_close"><button style="color: #ff0000; border-color:transparent; background-color:rgba(0, 0, 0, 0); font-size:10px; -webkit-app-region: no-drag; float: right;" onclick="win.close()">x</button></div>
+<div id="konum" style="font-family: verdana; color: #ffffff; font-size:12px; text-align: center">&nbsp</div>
+
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+  <div>
+    <div id="dialogboxhead" style="font-size:10px; border-radius:15px;"></div>
+    <div id="dialogboxbody" style="font-size:10px; border-radius:15px; color:#12182d;"></div>
+    <div id="dialogboxfoot" style="font-size:10px; border-radius:15px;"></div>
+  </div>
+</div>
+
+
+<div class="vakit"  style="text-align: right; clear: left;" id="kalan"></div>
+<div class="vakit"  style="text-align: right" id="sabah"></div>
+<div class="vakit"  style="text-align: right" id="ogle"></div>
+<div class="vakit"  style="text-align: right" id="ikindi"></div>
+<div class="vakit"  style="text-align: right" id="aksam"></div>
+<div class="vakit"  style="text-align: right" id="yatsi"></div>
+<div class="vakit"  style="text-align: right" id="gece"></div>
+
+</div>
+
+</body>
+</html>
