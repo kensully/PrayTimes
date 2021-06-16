@@ -1,10 +1,14 @@
 {
-    "app_name": "prayertimes-succeeder",
+    "app_name": "prayertimes",
     "chromium-args": "  --enable-transparent-visuals --disable-gpu --disable-web-security --allow-file-access-from-files --allow-file-access ",
     "dependencies": {
+        "bluebird": "^2.3.5",
+        "dblite": "^0.6.1",
         "fs-exists-sync": "^0.1.0",
+        "graceful-fs": "^4.1.6",
         "jsonfile": "^3.0.0",
-        "no-network-geocoder": "0.0.3"
+        "lodash": "^4.17.21",
+        "no-network-geocoder": "^0.0.3"
     },
     "main": "index.html",
     "name": "prayertimes-widget",
